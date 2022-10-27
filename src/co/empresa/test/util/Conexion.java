@@ -9,12 +9,12 @@ import java.sql.SQLException;
 public class Conexion {
 	
 	private Connection con = null;
-	private static Conexion db;
+	private static Conexion db = null;
 	private PreparedStatement preparedStatement;
 	
 	private static final String url = "jdbc:mysql://localhost:3306/";
-	private static final String dbName = "prueba";
-	private static final String driver = "com.mysql.jdbc.Driver";
+	private static final String dbName = "usuario";
+	private static final String driver = "com.mysql.cj.jdbc.Driver";
 	private static final String userName = "root";
 	private static final String password = "1234";
 	
@@ -22,6 +22,7 @@ public class Conexion {
 		try {
 			Class.forName(driver).newInstance();
 			con = (Connection) DriverManager.getConnection(url+dbName,userName,password);
+			System.out.println("Conexion establecida");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
